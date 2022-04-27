@@ -1,0 +1,45 @@
+{
+  "name": "leah-ts",
+  "version": "1.0.1",
+  "description": "Leah's TypeScript boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "run": "node out/index.js",
+    "dev": "nodemon --watch src -e ts,js --exec npm run build",
+    "dev:standalone": "nodemon --watch src -e ts,js --exec npm start",
+    "start": "npm run build && WEB3=http://_ether_node_de.ens.sh:3334 TEST_RESOLVER=1 npm run run"
+  },
+  "_moduleAliases": {
+    "~": "./out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leahlundqvist/ts.git"
+  },
+  "author": "Leah Lundqvist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leahlundqvist/ts/issues"
+  },
+  "homepage": "https://github.com/leahlundqvist/ts#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^14.14.40",
+    "@types/node-fetch": "^2.5.10",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "ethers": "^5.6.4",
+    "express": "^4.17.3",
+    "handy-redis": "^2.3.1",
+    "hot-shots": "^8.3.1",
+    "module-alias": "^2.2.2",
+    "node-fetch": "^2.6.1",
+    "ololog": "^1.1.175",
+    "redis": "^3.1.1"
+  }
+}

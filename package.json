@@ -1,0 +1,48 @@
+{
+  "name": "remix-template-express",
+  "private": true,
+  "description": "",
+  "license": "",
+  "sideEffects": false,
+  "scripts": {
+    "build": "run-p build:* && remix build",
+    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
+    "build:resolver": "cd resolver && npm run build",
+    "dev": "export WEB3=\"wss://mainnet.infura.io/ws/v3/1dcfcdba91ea44e08615be19b156ecca\" && npm run build && run-p dev:*",
+    "dev:node": "cross-env NODE_ENV=development nodemon ./server.js --watch ./server.js --watch ./resolver/out",
+    "dev:remix": "remix watch",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
+    "dev:resolver": "cd resolver && npm run dev",
+    "start": "cross-env NODE_ENV=production node ./server.js"
+  },
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "@remix-run/express": "^1.4.1",
+    "@remix-run/node": "^1.4.1",
+    "@remix-run/react": "^1.4.1",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "handy-redis": "^2.3.1",
+    "morgan": "^1.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.4.1",
+    "@remix-run/eslint-config": "^1.4.1",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "autoprefixer": "^10.4.5",
+    "concurrently": "^7.1.0",
+    "eslint": "^8.11.0",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
