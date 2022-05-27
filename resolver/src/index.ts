@@ -64,6 +64,7 @@ app.get('/social.png', async (request, response) => {
   await page.close()
 
   response.set('Content-Type', 'image/png')
+  response.set('Cache-Control', 'public, max-age=21600')
   response.send(buffer)
 })
 
