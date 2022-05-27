@@ -56,8 +56,10 @@ app.get('/social.png', async (request, response) => {
   });
 
   const page = await browser.newPage()
-  await page.goto(`http://${request.headers.host}/social`)
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+  await page.goto(`http://${request.headers.host}/social`, {
+    waitUntil: 'networkidle0',
+  })
+  
   const buffer = await page.screenshot({ type: 'png', encoding: 'binary' })
   await page.close()
 
