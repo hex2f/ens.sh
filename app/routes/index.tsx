@@ -16,7 +16,10 @@ export const meta: MetaFunction = ({ parentsData }) => {
   return ({
     charset: "utf-8",
     viewport: "width=device-width,initial-scale=1",
+    'twitter:card': 'summary_large_image',
+    'twitter:site': 'ens.sh',
     'og:image': `https://${parentsData.root.wallet.address}.ens.sh/social.png`,
+    'og:type': 'website',
     'og:title': `[Ξ ${parentsData.root.wallet.balance.toFixed(2)}] ${parentsData.root.wallet.ens ?? parentsData.root.wallet.address}`
   })
 }
