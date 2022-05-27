@@ -1,8 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import 'module-alias/register'
 import express from 'express'
+import Puppeteer from 'puppeteer'
 
 import Wallet from './wallet'
+
+let browser: Puppeteer.Browser
+Puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    defaultViewport: {
+      width: 900,
+      height: 450
+    }
+  })
+  .then((puppeteer) => { browser = puppeteer})
 
 const app = express()
 
@@ -37,6 +48,21 @@ app.get('/wallet.json', async (request, response) => {
       status: 500,
     });
   }
+})
+
+app.get('/social.png', async (request, response) => {
+  if (!request?.headers?.host) throw new Response("Wallet not found", {
+    status: 404,
+  });
+
+  const page = await browser.newPage()
+  await page.goto(`http://${request.headers.host}/social`)
+  await new Promise((resolve) => setTimeout(resolve, 5000))
+  const buffer = await page.screenshot({ type: 'png', encoding: 'binary' })
+  await page.close()
+
+  response.set('Content-Type', 'image/png')
+  response.send(buffer)
 })
 
 if (process.env.TEST_RESOLVER === '1') {

@@ -1,3 +1,4 @@
+import type { OpenSeaAsset } from "./contexts/OpenSeaContext";
 import type { Icon } from "./utilities/icons";
 
 export interface SocialLink {
@@ -24,6 +25,7 @@ export default class Wallet {
   avatar: string
   balance: number
   socialLinks: SocialLink[]
+  openseaAssets?: OpenSeaAsset[]
 
   constructor({ accent, accentHue, ens, address, avatar, balance, socialLinks }: Partial<Wallet>) {
     this.accent = accent ?? '#3a92f0'

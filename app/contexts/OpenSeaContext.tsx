@@ -3,6 +3,7 @@ import React, { createContext, useEffect } from "react"
 export interface OpenSeaAsset {
   animation_url?: string
   image_preview_url?: string
+  image_thumbnail_url?: string
   image_url?: string
   name: string
   permalink: string

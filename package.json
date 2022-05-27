@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "handy-redis": "^2.3.1",
     "morgan": "^1.10.0",
+    "puppeteer": "^13.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
