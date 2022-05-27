@@ -9,6 +9,17 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { useOpenSea } from "~/contexts/OpenSeaContext";
 import Card from "~/components/card";
 import HeaderIcon from "~/components/HeaderIcon";
+import type { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = ({ parentsData }) => {
+  console.log(parentsData.root.wallet.address)
+  return ({
+    charset: "utf-8",
+    viewport: "width=device-width,initial-scale=1",
+    'og:image': `https://${parentsData.root.wallet.address}.ens.sh/social.png`,
+    'og:title': `[Ξ ${parentsData.root.wallet.balance.toFixed(2)}] ${parentsData.root.wallet.ens ?? parentsData.root.wallet.address}`
+  })
+}
 
 export default function Index() {
   const wallet = useOutletContext<Wallet>()
