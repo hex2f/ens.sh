@@ -75,7 +75,9 @@ export default function Index() {
             </div>
           </div>
         </div>
+        <span className="block md:hidden w-full text-center mb-4 mt-2 opacity-50 italic text-sm"><a href="https://pixel.lol/">ens.sh - by pixel.lol</a></span>
       </Card>
+      <span className="absolute hidden md:block z-30 bottom-3 opacity-50 italic text-sm"><a href="https://pixel.lol/">ens.sh - by pixel.lol</a></span>
     </Fragment>
   );
 }
